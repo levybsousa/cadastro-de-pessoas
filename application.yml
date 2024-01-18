@@ -1,7 +1,8 @@
 spring:
   datasource:
     username: postgres
-    password: postgres
+    password: postgresgit config --global credential.helper manager
+
     url: jdbc:postgresql://localhost:5432/postgres
     driver-class-name: org.postgresql.Driver
   jpa:
