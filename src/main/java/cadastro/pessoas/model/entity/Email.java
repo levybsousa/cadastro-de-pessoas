@@ -9,15 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-public class Pessoa {
-
+public class Email {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_sequence")
-    @SequenceGenerator(name = "tarefa_sequence", sequenceName = "pes_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "email_sequence")
+    @SequenceGenerator(name = "email_sequence", sequenceName = "ema_seq")
+
     private Long id;
     private String nome;
-    private String cpf;
-    private String email;
-
-
 }
