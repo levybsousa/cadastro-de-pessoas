@@ -1,6 +1,7 @@
 package cadastro.pessoas.controller;
 
 import cadastro.pessoas.model.entity.Pessoa;
+import cadastro.pessoas.service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,9 @@ import java.util.List;
 @RequestMapping("/pessoas")
 @RestController
 @RequiredArgsConstructor
-public class PessaController {
+public class PessoaController {
+
+    final private PessoaService pessoaService;
 
     @GetMapping
     public ResponseEntity<List<Pessoa>> getAll() {
