@@ -17,26 +17,31 @@ public class PessoaController {
 
     @GetMapping
     public ResponseEntity<List<Pessoa>> getAll() {
-        return null;
+        List<Pessoa> pessoaResponse = pessoaService.getAll();
+        return ResponseEntity.ok(pessoaResponse);
     }
 
-    @GetMapping
-    public ResponseEntity<Pessoa> getById() {
-        return null;
+    @GetMapping("/{id}")
+    public ResponseEntity<Pessoa> getById(@PathVariable Long id) {
+        Pessoa pessoaResponse = pessoaService.getById(id);
+        return ResponseEntity.ok(pessoaResponse);
     }
 
     @PostMapping
     public ResponseEntity<Pessoa> save(@RequestBody Pessoa pessoa) {
-        return null;
+        Pessoa pessoaResponse = pessoaService.save(pessoa);
+        return ResponseEntity.ok(pessoaResponse);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Pessoa> update(@PathVariable Long id, @RequestBody Pessoa pessoa) {
-        return null;
+        Pessoa pessoaResponse = pessoaService.update(id, pessoa);
+        return ResponseEntity.ok(pessoaResponse);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        return null;
+        pessoaService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
