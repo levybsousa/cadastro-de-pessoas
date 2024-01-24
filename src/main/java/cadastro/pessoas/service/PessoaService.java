@@ -1,5 +1,6 @@
 package cadastro.pessoas.service;
 
+import cadastro.pessoas.exception.NegocioException;
 import cadastro.pessoas.exception.RecursoNaoEncontradoException;
 import cadastro.pessoas.model.entity.Pessoa;
 import cadastro.pessoas.repository.PessoaRepository;
@@ -32,7 +33,7 @@ public class PessoaService {
     public Pessoa save(Pessoa pessoa) {
         Optional<Pessoa> pessoaFromDataBase = pessoaRepository.getPessoaByNome(pessoa.getNome());
         if (pessoaFromDataBase.isPresent()) {
-            throw new RecursoNaoEncontradoException();
+            throw new NegocioException();
         }
         Pessoa result = pessoaRepository.save(pessoa);
         return result;
@@ -44,7 +45,7 @@ public class PessoaService {
         Optional<Pessoa> pessoaFromDataBase = pessoaRepository.getPessoaByNome(pessoa.getNome());
 
         if (pessoaFromDataBase.isPresent() && pessoaFromDataBase.get().getId() != pessoa.getId()) {
-            throw new RecursoNaoEncontradoException("Pessoa já cadastrada");
+            throw new NegocioException("Pessoa já cadastrada");
         }
         Pessoa result = pessoaRepository.save(pessoa);
         return result;
